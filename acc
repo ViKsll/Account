@@ -1,0 +1,84 @@
+package project1;
+import java.util.Date;
+
+public class Account {
+	private int id;
+	private double balance, annualInterestRate;
+	private Date dateCreated;
+	
+	public Account() //default constructor and variables with default values
+	{
+		id = 0;
+		balance = 0;
+		annualInterestRate = 0;
+		dateCreated = new Date(); //setting to current date
+	}
+	public Account(int id, double balance) //constructor with parameters
+	{
+		this(); //calling default constructor
+		this.id = id;
+		this.balance = balance;
+	}
+
+	void setId (int id) // mutator methods
+	{
+		this.id = id;
+	}
+	void setBalance (double balance)
+	{
+		this.balance = balance;
+	}	
+	void setAnnualInterestRate (double annualInterestRate)
+	{
+		this.annualInterestRate = annualInterestRate;
+	}
+	int getId () // accessor methods
+	{
+		return id;
+	}
+	double getBalance ()
+	{
+		return balance;
+	}
+	double getAnnualInterestRate ()
+	{
+		return annualInterestRate;
+	}
+
+	Date getDateCreated ()
+	{
+		return dateCreated;
+	}
+	
+	double getMonthlyInterestRate()
+	{
+		return balance * (annualInterestRate / 1200);
+	}
+	
+	void withdraw(double amount)
+	{
+		this.balance -= amount;
+	}
+	
+	void deposit(double amount)
+	{
+		this.balance += amount;
+	}
+	public static void main(String[] args) {
+		Account account = new Account(1122, 20000);
+		account.setAnnualInterestRate(4.5);
+		account.withdraw(2500.0);
+		account.deposit(3000.0);
+		System.out.println("Balance $" + account.getBalance());
+		System.out.println("Monthly interest: " + account.getMonthlyInterestRate());
+		System.out.println("Date Created: " + account.getDateCreated());
+	}
+}
+
+
+
+
+
+
+
+
